@@ -1,10 +1,16 @@
 extends layout
 
 block content
+  script(src='/javascripts/stats.js')
+  div(class="stat-tabs")
+    button(class="stattablinks" onclick="refreshTable('QB')") QB
+    button(class="stattablinks" onclick="refreshTable('RB')") RB
+    button(class="stattablinks" onclick="refreshTable('WR')") WR
+    button(class="stattablinks" onclick="refreshTable('TE')") TE
   div(class='stats')
     h2(class='stat-table-header')= "Quarter Backs"
-    div(class='table')
-      table(class='stat-table')
+    div(class='table', id='statDiv')
+      table(class='stat-table', id='statTable')
         tr
           th Name
           th Team
