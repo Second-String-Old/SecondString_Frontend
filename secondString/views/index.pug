@@ -21,8 +21,11 @@ block content
             th Passing Completions
             th Interceptions
         each player in data.Data
+          - var team = player.player_team
+          - var name = player.player_name
           tr
-            td #{player.player_name}
+            td 
+              a(href='/player/' + team + '/' + name) #{player.player_name}
             td #{player.player_team}
             td #{player.passing_yds}
             td #{player.passing_tds}

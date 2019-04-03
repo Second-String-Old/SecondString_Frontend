@@ -1,5 +1,5 @@
 var express = require('express');
-const https = require('https')
+const https = require('http');
 var router = express.Router();
 
 // Sets options to QB route on flask backend
@@ -14,11 +14,15 @@ router.get('/', function(req, res, next) {
   // Requests QB data
   const qbReq = https.request(options, (qbRes) => {
     // On response
+    var response = '';
     qbRes.on('data', (d) => {
-      // Parses GET response into JSON object data
-      var data = JSON.parse(d.toString());
-      // Renders stat page with data object
-      res.render('index', { title: 'Second String', data: data });
+      response += d.toString();
+    })
+    
+    qbRes.on('end', () => {
+      // Parses GET response into JSON object datas
+      var data = JSON.parse(response);
+      res.render('index', { title: 'Second String', data: data});
     })
   })
   

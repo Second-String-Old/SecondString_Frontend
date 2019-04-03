@@ -6,7 +6,7 @@ var logger = require('morgan');
 var pug = require('pug');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var playerRouter = require('./routes/player');
 
 var app = express();
 
@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/player', playerRouter);
 
 console.log('Server running at localhost:4444');
 

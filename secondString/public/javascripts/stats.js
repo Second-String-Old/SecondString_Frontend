@@ -49,6 +49,7 @@ function getTableData(position) {
     newCell.innerHTML = 'Loading Data';
     newCell.setAttribute('colspan', statTable.rows[0].cells.length);
     var xhttp = new XMLHttpRequest();
+    document.getElementById('statTableHeader').innerHTML = position;
     xhttp.onreadystatechange = function() {
         // Response is ready
         if (this.readyState == 4 && this.status == 200) {
@@ -65,12 +66,12 @@ function parseData(data, position) {
     jsonResponse =JSON.parse(data);
     players = jsonResponse.Data;
     var newTable = document.getElementById('statTable');
-    document.getElementById('statTableHeader').innerHTML = position;
     switch(position) {
         case 'QB':
             for (i = players.length-1; i >= 0; i--) {
                 var newRow = newTable.insertRow(1);
-                newRow.insertCell(0).innerHTML = players[i].player_name;
+                var nameRow = newRow.insertCell(0);
+                nameRow.innerHTML = '<a href="'+'/player/' + players[i].player_team + '/' + players[i].player_name+'">'+players[i].player_name+'</a>';
                 newRow.insertCell(1).innerHTML = players[i].player_team;
                 newRow.insertCell(2).innerHTML = players[i].passing_yds;
                 newRow.insertCell(3).innerHTML = players[i].passing_tds;
@@ -82,7 +83,8 @@ function parseData(data, position) {
         default:
             for (i = players.length-1; i >= 0; i--) {
                 var newRow = newTable.insertRow(1);
-                newRow.insertCell(0).innerHTML = players[i].player_name;
+                var nameRow = newRow.insertCell(0);
+                nameRow.innerHTML = '<a href="'+'/player/' + players[i].player_team + '/' + players[i].player_name+'">'+players[i].player_name+'</a>';
                 newRow.insertCell(1).innerHTML = players[i].player_team;
                 newRow.insertCell(2).innerHTML = players[i].rushing_yds;
                 newRow.insertCell(3).innerHTML = players[i].rushing_tds;
