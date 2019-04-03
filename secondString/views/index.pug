@@ -8,17 +8,18 @@ block content
     button(class="stattablinks" onclick="refreshTable('WR')") WR
     button(class="stattablinks" onclick="refreshTable('TE')") TE
   div(class='stats')
-    h2(class='stat-table-header')= "Quarter Backs"
+    h2(class='stat-table-header', id='statTableHeader')= "Quarter Backs"
     div(class='table', id='statDiv')
       table(class='stat-table', id='statTable')
-        tr
-          th Name
-          th Team
-          th Passing Yards
-          th Passing Touchdowns
-          th Passing Attempts
-          th Passing Completions
-          th Interceptions
+        thead
+          tr
+            th Name
+            th Team
+            th Passing Yards
+            th Passing Touchdowns
+            th Passing Attempts
+            th Passing Completions
+            th Interceptions
         each player in data.Data
           tr
             td #{player.player_name}
