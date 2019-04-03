@@ -20,7 +20,7 @@ function setHeader(position, table) {
             header.insertCell(5).innerHTML = 'Passing Completions';
             header.insertCell(6).innerHTML = 'Interceptions';
             break;
-        case 'RB':
+        default:
             header.insertCell(0).innerHTML = 'Name';
             header.insertCell(1).innerHTML = 'Team';
             header.insertCell(2).innerHTML = 'Rushing Yards';
@@ -29,12 +29,6 @@ function setHeader(position, table) {
             header.insertCell(5).innerHTML = 'Receiving Yards';
             header.insertCell(6).innerHTML = 'Receiving Touchdowns';
             header.insertCell(7).innerHTML = 'Receiving Receptions';
-            break;
-        case 'WR':
-            break;
-        case 'TE':
-            break;
-    }
 }
 
 function setTableStyle(table) {
@@ -70,9 +64,9 @@ function parseData(data, position) {
     jsonResponse =JSON.parse(data);
     players = jsonResponse.Data;
     var newTable = document.getElementById('statTable');
+    document.getElementById('statTableHeader').innerHTML = position;
     switch(position) {
         case 'QB':
-            document.getElementById('statTableHeader').innerHTML = 'Quarter Backs';
             for (i = players.length-1; i >= 0; i--) {
                 var newRow = newTable.insertRow(1);
                 newRow.insertCell(0).innerHTML = players[i].player_name;
@@ -84,8 +78,7 @@ function parseData(data, position) {
                 newRow.insertCell(6).innerHTML = players[i].passing_int;
             }
             break;
-        case 'RB':
-            document.getElementById('statTableHeader').innerHTML = 'Running Backs';
+        default:
             for (i = players.length-1; i >= 0; i--) {
                 var newRow = newTable.insertRow(1);
                 newRow.insertCell(0).innerHTML = players[i].player_name;
@@ -97,10 +90,5 @@ function parseData(data, position) {
                 newRow.insertCell(6).innerHTML = players[i].receiving_tds;
                 newRow.insertCell(7).innerHTML = players[i].receiving_rec;
             }
-            break;
-        case 'WR':
-            break;
-        case 'TE':
-            break;
     }
 }
