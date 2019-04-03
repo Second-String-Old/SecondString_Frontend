@@ -29,6 +29,7 @@ function setHeader(position, table) {
             header.insertCell(5).innerHTML = 'Receiving Yards';
             header.insertCell(6).innerHTML = 'Receiving Touchdowns';
             header.insertCell(7).innerHTML = 'Receiving Receptions';
+    }
 }
 
 function setTableStyle(table) {
