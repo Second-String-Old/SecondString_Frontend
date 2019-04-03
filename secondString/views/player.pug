@@ -3,47 +3,48 @@ extends layout
 block content
   div(class='stats')
     - var player = data.Data[0]
-    h2(class='stat-table-header', id='statTableHeader')= player.position
+    h2(class='stat-table-header', id='statTableHeader')= player.player_name
     case player.position
       when 'QB'
         div(class='table', id='statDiv')
           table(class='stat-table', id='statTable')
             thead
               tr
-                th Name
                 th Team
                 th Position
+                th Attempts
+                th Completions
+                th Completion Percentage
                 th Passing Yards
+                th Average Yards / Attempt
                 th Passing Touchdowns
-                th Passing Attempts
-                th Passing Completions
                 th Interceptions
                 th Rushing Yards
                 th Rushing Attempts
-                th Total Yards
-                th Total Attempts
+                th Rushing Touchdowns
+                th Sacks
             each player in data.Data
-              - var totalYards = parseInt(player.passing_yds) + parseInt(player.rushing_yds)
-              - var totalAtts = parseInt(player.passing_att) + parseInt(player.rushing_att)
+              - var cmp = (player.passing_cmp / player.passing_att) * 100
+              - var avg = player.passing_yds / player.passing_att
               tr
-                td #{player.player_name}
                 td #{player.player_team}
                 td #{player.position}
-                td #{player.passing_yds}
-                td #{player.passing_tds}
                 td #{player.passing_att}
                 td #{player.passing_cmp}
+                td #{cmp.toFixed(2)}%
+                td #{player.passing_yds}
+                td #{avg.toFixed(2)}
+                td #{player.passing_tds}
                 td #{player.passing_int}
                 td #{player.rushing_yds}
                 td #{player.rushing_att}
-                td #{totalYards}
-                td #{totalAtts}
+                td #{player.rushing_tds}
+                td #{player.passing_sk}
       default
         div(class='table', id='statDiv')
           table(class='stat-table', id='statTable')
             thead
               tr
-                th Name
                 th Team
                 th Position
                 th Rushing Yards
@@ -60,7 +61,6 @@ block content
               - var totalAtts = parseInt(player.rushing_att) + parseInt(player.receiving_rec)
               - var totalTouchdowns = parseInt(player.rushing_tds) + parseInt(player.receiving_tds)
               tr
-                td #{player.player_name}
                 td #{player.player_team}
                 td #{player.position}
                 td #{player.rushing_yds}
