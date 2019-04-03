@@ -1,20 +1,10 @@
 function refreshTable(position) {
     var newTable = document.createElement("TABLE");
-
-    switch(position) {
-        case 'QB':
-            setHeader(position, newTable);
-            clearStatTable();
-            setTableStyle(newTable);
-            document.getElementById('statDiv').appendChild(newTable);
-            getTableData(position);
-        case RB:
-            break;
-        case WR:
-            break
-        case TE:
-            break;
-    }
+    setHeader(position, newTable);
+    clearStatTable();
+    setTableStyle(newTable);
+    document.getElementById('statDiv').appendChild(newTable);
+    getTableData(position);
 }
 
 function setHeader(position, table) {
@@ -52,7 +42,6 @@ function getTableData(position) {
     xhttp.onreadystatechange = function() {
         // Response is ready
         if (this.readyState == 4 && this.status == 200) {
-            console.log("response:");
             parseData(xhttp.responseText, position);
         }
     };
