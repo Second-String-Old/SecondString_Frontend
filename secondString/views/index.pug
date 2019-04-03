@@ -1,24 +1,24 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
   div(class='stats')
     h2(class='stat-table-header')= "Quarter Backs"
-    table(class='stat-table')
-      tr
-        th Name
-        th Team
-        th Passing Yards
-        th Passing Touchdowns
-        th Passing Attempts
-        th Passing Completions
-        th Interceptions
-      tr
-        td Drew Brees
-        td NO
-        td 439
-        td 3
-        td 45
-        td 37
-        td 0
+    div(class='table')
+      table(class='stat-table')
+        tr
+          th Name
+          th Team
+          th Passing Yards
+          th Passing Touchdowns
+          th Passing Attempts
+          th Passing Completions
+          th Interceptions
+        each player in data.Data
+          tr
+            td #{player.player_name}
+            td #{player.player_team}
+            td #{player.passing_yds}
+            td #{player.passing_tds}
+            td #{player.passing_att}
+            td #{player.passing_cmp}
+            td #{player.passing_int}
