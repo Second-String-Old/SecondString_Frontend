@@ -32,6 +32,18 @@ a {
   padding: .75rem 1.25rem;
 }
 
+tr {
+  background-color: #253E4B;
+  border: 1px solid black;
+  color: white;
+}
+
 tr:nth-child(even) {
-  background-color: #f2f2f2
+  background-color: #193441;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: center;
+  padding: 1rem;
 }
