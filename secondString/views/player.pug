@@ -12,6 +12,25 @@ block content
               tr
                 th Team
                 th Position
+                th Weight
+                th Height
+                th College
+                th Number
+                th Birthday
+                th Years Pro
+            each player in data.Data
+              tr
+                td #{player.player_team}
+                td #{player.position}
+                td #{player.weight}
+                td #{player.height}
+                td #{player.college}
+                td #{player.number}
+                td #{player.birthdate}
+                td #{player.years_pro}
+          table(class='stat-table')
+            thead
+              tr
                 th Attempts
                 th Completions
                 th Completion Percentage
@@ -27,8 +46,6 @@ block content
               - var cmp = (player.passing_cmp / player.passing_att) * 100
               - var avg = player.passing_yds / player.passing_att
               tr
-                td #{player.player_team}
-                td #{player.position}
                 td #{player.passing_att}
                 td #{player.passing_cmp}
                 td #{cmp.toFixed(2)}%

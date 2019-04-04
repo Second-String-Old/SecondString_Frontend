@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 13px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #E5E6EA;
 }
 
@@ -15,9 +15,10 @@ a {
 }
 
 .stat-table {
-  width: 100%;
+  width: 95%;
   border: 1px solid black;
   border-collapse: collapse;
+  margin: 1rem;
 }
 
 .stat-table-header {
