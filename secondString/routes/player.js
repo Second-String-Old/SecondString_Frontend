@@ -5,8 +5,7 @@ var router = express.Router();
 /* GET player stats. */
 router.get('/:team/:name', function(req, res, next) {
   const options = {
-    hostname: 'localhost',
-    port: '5000',
+    hostname: 'flask-ss-heroku.herokuapp.com',
     path: '/players/?name=' + encodeURIComponent(req.params.name) + '&team=' + encodeURIComponent(req.params.team),
     method: 'GET'
   }
